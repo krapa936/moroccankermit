@@ -32,20 +32,14 @@ client.user.setGame(`by Floki | %help`,"http://twitch.tv/S-F")
 
 
 
-client.on("message", message => {
-	var prefix = "*&";
-
-            if (message.content.startsWith(prefix + "bc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'all').forEach(m => {
- m.send(`${argresult}\n ${m}`);
-})
- message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'all').size}\` : sent to`); 
- message.delete(); 
-};     
+client.on('guildMemberAdd', member => {
+const codes = member.guild.channels.get("491307189646917672");//???? ?????
+if(!codes) return;
+if(codes) {
+codes.send(`**__Welcome To Gaming & Meeting 24/7  __ ${member}**`);          
+}
 });
+
 
 
 
